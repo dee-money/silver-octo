@@ -7,22 +7,33 @@
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `school` to your list of dependencies in `mix.exs`:
 
-# Data Structure
+## Data Structure
 
-+ Classroom
-  + name:string
-+ Teacher
-  + name:string
-  + age:number
-  + speciality:array:Subject
-+ Student
-  + name:string
-  + grade:number
-  + age:number
-  + gender:string
-+ Subject
-  + name:string
-  + grade:number
++ Venues
+  + Building
+    + name:string
+  + Room
+    + name:string
+    + building:references:Building
+
++ Materials
+  + Class
+    + subject:references:Subject
+    + room:references:Room
+  + Subject
+    + name:string
+    + grade:number
+
++ Attendees
+  + Teacher
+    + name:string
+    + age:number
+    + speciality:array:Subject
+  + Student
+    + name:string
+    + grade:number
+    + age:number
+    + gender:string
 
 ```elixir
 def deps do
