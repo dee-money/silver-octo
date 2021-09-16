@@ -1,9 +1,14 @@
 defmodule School.Venues.Building do
-  @enforce_keys [:name]
-  defstruct [:name]
+  @enforce_keys [:id, :name]
+  defstruct [:id, :name]
+  
+  defmodule Store do
+    use School.Storage.Base
+  end
   
   def new(%{name: name}) do
     %__MODULE__{
+      id: UUID.uuid4(),
       name: name
     }
   end
