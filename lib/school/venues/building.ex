@@ -1,4 +1,6 @@
 defmodule School.Venues.Building do
+  @derive Jason.Encoder
+  
   @enforce_keys [:id, :name]
   defstruct [:id, :name]
   
