@@ -17,6 +17,21 @@ defmodule School.Storage.Base do
           content
         end)
       end
+      
+      def search([{key, value}]) do
+        all()
+        |> Enum.filter(fn item -> 
+          item = Map.from_struct(item)
+          
+          case {Map.get(item, key), value} do
+            {data, query} when is_list(data) ->
+              Enum.any?(data, fn d -> d == value end)
+              
+            {data, query} ->
+              data == query  
+          end
+        end)
+      end
 
       def update(%{id: resource_id} = resource, params) do
         case get(resource_id) do

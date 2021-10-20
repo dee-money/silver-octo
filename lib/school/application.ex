@@ -6,7 +6,9 @@ defmodule School.Application do
   def start(_type, _args) do
     children = [
       School.Venues.Building.Store,
-      School.Venues.Room.Store
+      School.Venues.Room.Store,
+      
+      {Plug.Cowboy, scheme: :http, plug: School.Router, port: 4040}
       # Starts a worker by calling: Skool.Worker.start_link(arg)
       # {Skool.Worker, arg}
     ]

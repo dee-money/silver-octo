@@ -22,6 +22,10 @@ defmodule School.Venues do
   defdelegate update_building(building, params),
     to: Building.Store,
     as: :update
+    
+  defdelegate search_building(query),
+    to: Building.Store,
+    as: :search
 
   alias Venues.Room
 
